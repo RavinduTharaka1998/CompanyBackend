@@ -47,6 +47,7 @@ namespace CompanyBackend.Controllers
         public async Task<ActionResult<Employee>> PostEmployee(Employee employee)
         {
 
+            Console.WriteLine("Employee Add Function Called...");
             _employeeContext.Employees.Add(employee);
             await _employeeContext.SaveChangesAsync();
 
