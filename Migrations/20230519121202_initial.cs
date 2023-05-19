@@ -5,11 +5,24 @@
 namespace CompanyBackend.Migrations
 {
     /// <inheritdoc />
-    public partial class update : Migration
+    public partial class initial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Department",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    departmentName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Department", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
@@ -33,6 +46,9 @@ namespace CompanyBackend.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Department");
+
             migrationBuilder.DropTable(
                 name: "Employees");
         }

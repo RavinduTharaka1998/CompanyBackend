@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CompanyBackend.Migrations
 {
-    [DbContext(typeof(EmployeeContext))]
-    partial class EmployeeContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(CompanyContext))]
+    partial class CompanyContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,23 @@ namespace CompanyBackend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("CompanyBackend.Models.Department", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("departmentName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Department");
+                });
 
             modelBuilder.Entity("CompanyBackend.Models.Employee", b =>
                 {

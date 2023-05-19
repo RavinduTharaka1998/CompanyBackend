@@ -9,9 +9,9 @@ namespace CompanyBackend.Controllers
     [ApiController]
     public class EmployeeController : ControllerBase
     {
-        private readonly EmployeeContext _employeeContext;
+        private readonly CompanyContext _employeeContext;
 
-        public EmployeeController(EmployeeContext employeeContext)
+        public EmployeeController(CompanyContext employeeContext)
         {
             _employeeContext = employeeContext;
         }
